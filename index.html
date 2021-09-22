@@ -15,16 +15,17 @@
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
+    <h2 class="accordion-header" id="headingOne" onclick="negotiate()">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         <b>Hide Me</b>
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <center>Negotiation closes in <h1><span id="time">05:00</span></h1></center>
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
+    <h2 class="accordion-header" id="headingTwo" onclick="init_buyer()">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         <b>Buyer</b>
       </button>
@@ -32,32 +33,36 @@
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <form>
-        <div class="input-group flex-nowrap">
-          <span id="lb-buyer-01" class="input-group-text btn-primary"></span>
-          <input id="in-buyer-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-01">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-buyer-02" class="input-group-text btn-info"></span>
-          <input id="in-buyer-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-02">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-buyer-03" class="input-group-text"></span>
-          <input id="in-buyer-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-03">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-buyer-04" class="input-group-text"></span>
-          <input id="in-buyer-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-04">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-buyer-05" class="input-group-text"></span>
-          <input id="in-buyer-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-05">
-        </div>
-      </form>
+          <div class="input-group flex-nowrap">
+            <span id="lb-buyer-01" class="input-group-text btn-primary"></span>
+            <input id="in-buyer-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-01">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-buyer-02" class="input-group-text btn-info"></span>
+            <input id="in-buyer-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-02">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-buyer-03" class="input-group-text"></span>
+            <input id="in-buyer-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-03">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-buyer-04" class="input-group-text"></span>
+            <input id="in-buyer-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-04">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-buyer-05" class="input-group-text"></span>
+            <input id="in-buyer-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-05">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-buyer-06" class="input-group-text"></span>
+            <input id="in-buyer-06" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-06">
+          </div>
+        </form>
       </div>
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
+    <h2 class="accordion-header" id="headingThree" onclick="init_seller()">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         <b>Seller</b>
       </button>
@@ -65,27 +70,31 @@
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <form>
-        <div class="input-group flex-nowrap">
-          <span id="lb-seller-01" class="input-group-text btn-primary"></span>
-          <input id="in-seller-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-01">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-seller-02" class="input-group-text btn-info"></span>
-          <input id="in-seller-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-02">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-seller-03" class="input-group-text"></span>
-          <input id="in-seller-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-03">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-seller-04" class="input-group-text"></span>
-          <input id="in-seller-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-04">
-        </div>
-        <div class="input-group flex-nowrap">
-          <span id="lb-seller-05" class="input-group-text"></span>
-          <input id="in-seller-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-05">
-        </div>
-      </form>
+          <div class="input-group flex-nowrap">
+            <span id="lb-seller-01" class="input-group-text btn-primary"></span>
+            <input id="in-seller-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-01">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-seller-02" class="input-group-text btn-info"></span>
+            <input id="in-seller-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-02">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-seller-03" class="input-group-text"></span>
+            <input id="in-seller-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-03">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-seller-04" class="input-group-text"></span>
+            <input id="in-seller-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-04">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-seller-05" class="input-group-text"></span>
+            <input id="in-seller-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-05">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-seller-06" class="input-group-text"></span>
+            <input id="in-seller-06" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-06">
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -97,7 +106,32 @@
     </h2>
     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        Fair point:
+        <form>
+          <div class="input-group flex-nowrap">
+            <span id="lb-summary-01" class="input-group-text btn-primary"></span>
+            <input id="in-summary-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="summary-01">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-summary-02" class="input-group-text btn-info"></span>
+            <input id="in-summary-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="summary-02">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-summary-03" class="input-group-text"></span>
+            <input id="in-summary-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="summary-03">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-summary-04" class="input-group-text"></span>
+            <input id="in-summary-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="summary-04">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-summary-05" class="input-group-text"></span>
+            <input id="in-summary-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="summary-05">
+          </div>
+          <div class="input-group flex-nowrap">
+            <span id="lb-summary-06" class="input-group-text"></span>
+            <input id="in-summary-06" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="summary-06">
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -125,46 +159,102 @@ function iChoose(items){ return items[Math.floor(Math.random()*items.length)]; }
 function getTerm()      { return iChoose('30 Days,90 Days,15 Days,1 week,5 weeks'.split(',')); }
 function getFrequency() { return iChoose('One off, Quarterly, Monthly, Yearly'.split(',')); }
 function getType()      { return iChoose('Alfa,Bravo,Charlie,Delta,Echo,Foxtrot,Golf,Hotel,India,Juliett,Kilo,Lima,Mike,November,Oscar,Papa,Quebec,Romeo,Sierra,Tango,Uniform,Victor,Whiskey,X-ray,Yankee,Zulu'.split(',')); }
+function getTechnique() { return iChoose('Professional Flinch, Nibble, Summarize the Deal often, Pause like Hell!'.split(',')); }
 
-  const ctx = {}
-  ctx.val  = r1000()
-  ctx.qty  = r1000()
-  ctx.term = getTerm()
-  ctx.freq = getFrequency()
-  ctx.type = getType()
+var global_timer;
+var global_summary_ctx={};
 
-$('#lb-buyer-01').text('Budget')
-$('#in-buyer-01').val( ctx.val + Math.floor(ctx.val*Math.random()) )
+const ctx = {}
+      ctx.val  = r1000()
+      ctx.qty  = r1000()
+const zero_ctx = {};
+      zero_ctx['??????']=''
+      zero_ctx['?????']=''
+      zero_ctx['????']=''
+      zero_ctx['???']=''
+      zero_ctx['??']=''
+      zero_ctx['?']=''
+function update_view(o,str_key){
+  var idx=0;
+  Object.keys(o).forEach((o_key)=>{
+    idx++;
+    $('#lb-'+str_key+'-0'+idx).text( o_key );
+    $('#in-'+str_key+'-0'+idx).val( o[o_key] );
+    console.log(o_key + o[o_key])
+  })
+}
 
-$('#lb-buyer-02').text('Quantity')
-$('#in-buyer-02').val( ctx.qty + Math.floor(ctx.qty*Math.random()) )
+function init_seller(){
+  var seller_ctx = {};
+  seller_ctx['Break Even']   = ctx.val - Math.floor(ctx.val*Math.random()) ;
+  seller_ctx['Practice']     = getTechnique() ;
+  seller_ctx['Quantity']     = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
+  seller_ctx['Type']         = getType() ;
+  seller_ctx['Invoice Term'] = getTerm() ;
+  seller_ctx['Frequency']    = getFrequency() ;
 
-$('#lb-buyer-03').text('Type')
-$('#in-buyer-03').val( getType() )
+  global_summary_ctx['Seller Practice'] = seller_ctx['Practice']
+  global_summary_ctx['Seller Break Even'] = seller_ctx['Break Even']
 
-$('#lb-buyer-04').text('Invoice Term')
-$('#in-buyer-04').val( getTerm() )
+  /* ************************************************************** */
 
-$('#lb-buyer-05').text('Frequency')
-$('#in-buyer-05').val( getFrequency() )
+  update_view(seller_ctx,'seller');
+  setTimeout( ()=>{update_view(zero_ctx,'seller')}, 10*1000);
+}
+function init_buyer(){
+  var buyer_ctx = {};
+  buyer_ctx['Budget']       = ctx.val + Math.floor(ctx.val*Math.random()) ;
+  buyer_ctx['Practice']     = getTechnique() ;
+  buyer_ctx['Quantity']     = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
+  buyer_ctx['Type']         = getType() ;
+  buyer_ctx['Invoice Term'] = getTerm() ;
+  buyer_ctx['Frequency']    = getFrequency() ;
 
+  global_summary_ctx['Buyer Budget'] = buyer_ctx['Budget']
+  global_summary_ctx['Buyer Practice'] = buyer_ctx['Practice']
 
-/* ************************************************************** */
+  /* ************************************************************** */
 
-$('#lb-seller-01').text('Break Even')
-$('#in-seller-01').val( ctx.val - Math.floor(ctx.val*Math.random()) )
+  update_view(buyer_ctx ,'buyer' );
+  setTimeout( ()=>{update_view(zero_ctx,'buyer')}, 10*1000);
+}
 
-$('#lb-seller-02').text('Quantity')
-$('#in-seller-02').val( ctx.qty - Math.floor(ctx.qty*Math.random()) )
+function startTimer(duration, display) {
+  clearInterval(global_timer);
+  var start = Date.now(),
+      diff,
+      minutes,
+      seconds;
+  function timer() {
+      // get the number of seconds that have elapsed since 
+      // startTimer() was called
+      diff = duration - (((Date.now() - start) / 1000) | 0);
 
-$('#lb-seller-03').text('Type')
-$('#in-seller-03').val( getType() )
+      // does the same job as parseInt truncates the float
+      minutes = (diff / 60) | 0;
+      seconds = (diff % 60) | 0;
 
-$('#lb-seller-04').text('Invoice Term')
-$('#in-seller-04').val( getTerm() )
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
 
-$('#lb-seller-05').text('Frequency')
-$('#in-seller-05').val( getFrequency() )
+      display.textContent = minutes + ":" + seconds; 
+
+      if (diff <= 0) {
+          // add one second so that the count down starts at the full duration
+          // example 05:00 not 04:59
+          start = Date.now() + 1000;
+      }
+  };
+  // we don't want to wait a full second before the timer starts
+  timer();
+  return setInterval(timer, 1000);
+}
+
+function negotiate() {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    global_timer = startTimer(fiveMinutes, display);
+};
 
 </script>
   </body>
