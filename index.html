@@ -15,7 +15,7 @@
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne" onclick="negotiate()">
+    <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         <b>Hide it all</b>
       </button>
@@ -46,6 +46,7 @@
             <span id="lb-buyer-03" class="input-group-text"></span>
             <input id="in-buyer-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-03">
           </div>
+          <button type="button" class="btn btn-danger btn-block w-100 m-3" onclick="delete_buyer()">Hide Info</button>
           <div class="input-group flex-nowrap">
             <span id="lb-buyer-04" class="input-group-text"></span>
             <input id="in-buyer-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-04">
@@ -83,6 +84,7 @@
             <span id="lb-seller-03" class="input-group-text"></span>
             <input id="in-seller-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-03">
           </div>
+          <button type="button" class="btn btn-danger btn-block w-100 m-3" onclick="delete_seller()">Hide Info</button>
           <div class="input-group flex-nowrap">
             <span id="lb-seller-04" class="input-group-text"></span>
             <input id="in-seller-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-04">
@@ -137,7 +139,7 @@
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive">
+    <h2 class="accordion-header" id="headingFive" onclick="negotiate()">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
         <b>The 5 min timmer</b>
       </button>
@@ -172,15 +174,22 @@ function iChoose(items){ return items[Math.floor(Math.random()*items.length)]; }
 function getTerm()      { return iChoose('30 Days,90 Days,15 Days,1 week,5 weeks'.split(',')); }
 function getFrequency() { return iChoose('One off, Quarterly, Monthly, Yearly'.split(',')); }
 function getType()      { return iChoose('Alfa,Bravo,Charlie,Delta,Echo,Foxtrot,Golf,Hotel,India,Juliett,Kilo,Lima,Mike,November,Oscar,Papa,Quebec,Romeo,Sierra,Tango,Uniform,Victor,Whiskey,X-ray,Yankee,Zulu'.split(',')); }
-function getTechnique() { return iChoose('Professional Flinch, Nibble, Summarize the Deal often, Pause like Hell!'.split(',')); }
+function getTechnique(str_in) {
+  const arr_tech = 'Just say NO!,Open ended questions,Closed questions,Professional Flinch, Nibble, Summarize the Deal often, Pause like Hell!'.split(',')
+  var str_out = iChoose(arr_tech);
+  while(str_out === str_in){
+    str_out = iChoose(arr_tech);
+  }
+  return str_out
+}
 
 var global_timer;
-var global_buyer_timer;
-var global_seller_timer;
+//var global_buyer_timer;
+//var global_seller_timer;
 function clear_all(){
   clearInterval(global_timer);
-  clearInterval(global_buyer_timer);
-  clearInterval(global_seller_timer);
+  //clearInterval(global_buyer_timer);
+  //clearInterval(global_seller_timer);
 }
 var global_summary_ctx={};
 
@@ -207,14 +216,15 @@ function update_view(o,str_key){
 function init_summary(){
   update_view(global_summary_ctx ,'summary' );
 }
+function delete_seller(){update_view(zero_ctx,'seller')}
 function init_seller(){
   var seller_ctx = {};
-  seller_ctx['Remember to:'] = getTechnique() ;
+  seller_ctx['Remember to:'] = getTechnique(global_summary_ctx['Buyer Practice']) ;
   seller_ctx['Break Even']   = ctx.val - Math.floor(ctx.val*Math.random()) ;
-  seller_ctx['Quantity']     = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
   seller_ctx['Type']         = getType() ;
   seller_ctx['Invoice Term'] = getTerm() ;
   seller_ctx['Frequency']    = getFrequency() ;
+  seller_ctx['Quantity']     = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
 
   global_summary_ctx['Seller Practice'] = seller_ctx['Practice']
   global_summary_ctx['Seller Break Even'] = seller_ctx['Break Even']
@@ -223,16 +233,17 @@ function init_seller(){
   /* ************************************************************** */
 
   update_view(seller_ctx,'seller');
-  global_seller_timer = setTimeout( ()=>{update_view(zero_ctx,'seller')}, 10*1000);
+  //global_seller_timer = setTimeout( ()=>{update_view(zero_ctx,'seller')}, 20*1000);
 }
+function delete_buyer(){update_view(zero_ctx,'buyer')}
 function init_buyer(){
   var buyer_ctx = {};
-  buyer_ctx['Remember to:'] = getTechnique() ;
+  buyer_ctx['Remember to:'] = getTechnique(global_summary_ctx['Seller Practice']) ;
   buyer_ctx['Budget']       = ctx.val + Math.floor(ctx.val*Math.random()) ;
-  buyer_ctx['Quantity']     = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
   buyer_ctx['Type']         = getType() ;
   buyer_ctx['Invoice Term'] = getTerm() ;
   buyer_ctx['Frequency']    = getFrequency() ;
+  buyer_ctx['Quantity']     = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
 
   global_summary_ctx['Buyer Budget'] = buyer_ctx['Budget']
   global_summary_ctx['Buyer Practice'] = buyer_ctx['Practice']
@@ -241,7 +252,7 @@ function init_buyer(){
   /* ************************************************************** */
 
   update_view(buyer_ctx ,'buyer' );
-  global_buyer_timer = setTimeout( ()=>{update_view(zero_ctx,'buyer')}, 10*1000);
+  //global_buyer_timer = setTimeout( ()=>{update_view(zero_ctx,'buyer')}, 20*1000);
 }
 
 function startTimer(duration, display) {
