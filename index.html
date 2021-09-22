@@ -198,8 +198,8 @@ function update_view(o,str_key){
 
 function init_seller(){
   var seller_ctx = {};
+  seller_ctx['Remember to:'] = getTechnique() ;
   seller_ctx['Break Even']   = ctx.val - Math.floor(ctx.val*Math.random()) ;
-  seller_ctx['Practice']     = getTechnique() ;
   seller_ctx['Quantity']     = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
   seller_ctx['Type']         = getType() ;
   seller_ctx['Invoice Term'] = getTerm() ;
@@ -215,8 +215,8 @@ function init_seller(){
 }
 function init_buyer(){
   var buyer_ctx = {};
+  buyer_ctx['Remember to:'] = getTechnique() ;
   buyer_ctx['Budget']       = ctx.val + Math.floor(ctx.val*Math.random()) ;
-  buyer_ctx['Practice']     = getTechnique() ;
   buyer_ctx['Quantity']     = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
   buyer_ctx['Type']         = getType() ;
   buyer_ctx['Invoice Term'] = getTerm() ;
