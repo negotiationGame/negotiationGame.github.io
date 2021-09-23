@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -35,29 +36,37 @@
       <div class="accordion-body">
         <form>
           <div class="input-group flex-nowrap">
-            <span id="lb-buyer-01" class="input-group-text btn-primary"></span>
+            <span class="input-group-text bg-primary">M</span>
+            <span id="lb-buyer-01" class="input-group-text bg-primary"></span>
             <input id="in-buyer-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-01">
           </div>
           <div class="input-group flex-nowrap">
-            <span id="lb-buyer-02" class="input-group-text btn-info"></span>
+            <span class="input-group-text"><i class="fas fa-coins"></i></span>
+            <span id="lb-buyer-02" class="input-group-text bg-info"></span>
             <input id="in-buyer-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-02">
+            <span class="input-group-text"><i class="fas fa-yen-sign"></i></span>
           </div>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-warning">C</span>
             <span id="lb-buyer-03" class="input-group-text"></span>
             <input id="in-buyer-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-03">
           </div>
           <button type="button" class="btn btn-danger btn-block w-100 m-3" onclick="delete_buyer()">Hide Info</button>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-danger">W</span>
             <span id="lb-buyer-04" class="input-group-text"></span>
             <input id="in-buyer-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-04">
           </div>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-warning">C</span>
             <span id="lb-buyer-05" class="input-group-text"></span>
             <input id="in-buyer-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-05">
           </div>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-success">S</span>
             <span id="lb-buyer-06" class="input-group-text"></span>
             <input id="in-buyer-06" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="buyer-06">
+            <span class="input-group-text">units</span>
           </div>
         </form>
       </div>
@@ -73,29 +82,37 @@
       <div class="accordion-body">
         <form>
           <div class="input-group flex-nowrap">
-            <span id="lb-seller-01" class="input-group-text btn-primary"></span>
+            <span class="input-group-text bg-primary">M</span>
+            <span id="lb-seller-01" class="input-group-text bg-primary"></span>
             <input id="in-seller-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-01">
           </div>
           <div class="input-group flex-nowrap">
-            <span id="lb-seller-02" class="input-group-text btn-info"></span>
+            <span class="input-group-text"><i class="fas fa-coins"></i></span>
+            <span id="lb-seller-02" class="input-group-text bg-info"></span>
             <input id="in-seller-02" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-02">
+            <span class="input-group-text"><i class="fas fa-yen-sign"></i></span>
           </div>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-warning">C</span>
             <span id="lb-seller-03" class="input-group-text"></span>
             <input id="in-seller-03" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-03">
           </div>
           <button type="button" class="btn btn-danger btn-block w-100 m-3" onclick="delete_seller()">Hide Info</button>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-danger">W</span>
             <span id="lb-seller-04" class="input-group-text"></span>
             <input id="in-seller-04" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-04">
           </div>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-warning">C</span>
             <span id="lb-seller-05" class="input-group-text"></span>
             <input id="in-seller-05" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-05">
           </div>
           <div class="input-group flex-nowrap">
+            <span class="input-group-text bg-success">S</span>
             <span id="lb-seller-06" class="input-group-text"></span>
             <input id="in-seller-06" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="seller-06">
+            <span class="input-group-text">units</span>
           </div>
         </form>
       </div>
@@ -175,7 +192,28 @@ function getTerm()      { return iChoose('30 Days,90 Days,15 Days,1 week,5 weeks
 function getFrequency() { return iChoose('One off, Quarterly, Monthly, Yearly'.split(',')); }
 function getType()      { return iChoose('Alfa,Bravo,Charlie,Delta,Echo,Foxtrot,Golf,Hotel,India,Juliett,Kilo,Lima,Mike,November,Oscar,Papa,Quebec,Romeo,Sierra,Tango,Uniform,Victor,Whiskey,X-ray,Yankee,Zulu'.split(',')); }
 function getTechnique(str_in) {
-  const arr_tech = 'Just say NO!,Open ended questions,Closed questions,Professional Flinch, Nibble, Summarize the Deal often, Pause like Hell!'.split(',')
+  var arr_tech = []
+  arr_tech.push("Assert:I can get it cheaper somewhere else...")
+  arr_tech.push("Just say NO!")
+  arr_tech.push("Moral Obligation:Is that the best you can do? <PAUSE> <REPLY> Is that really, the very best you can do?")
+  arr_tech.push("Moral Obligation:Are you telling me that you've never sold that item for less than that amount? ever?")
+  arr_tech.push("Low ball: 100 dollar -> I can give you 50 dollar, cash, right now! (Reduce inventory cost, CC Merchant fees, Instant gratification, etc.)")
+  arr_tech.push("Expand: Use Open ended questions")
+  arr_tech.push("Narrow: Use Closed ended questions. Yes/No")
+  arr_tech.push("Flinch: non verbal")
+  arr_tech.push("Flinch: audible")
+  arr_tech.push("Flinch: verbally")
+  arr_tech.push("Nibble a tie, free delivery, a coffee")
+  arr_tech.push("Summarize the Deal often")
+  arr_tech.push("Pause, wait and analyse")
+  arr_tech.push("Fair")
+  arr_tech.push("Win-Win")
+  arr_tech.push("I propose.., Does that seem fair to you?")
+  arr_tech.push("Flinch: Does that seem fair to you?")
+  arr_tech.push("Flinch: I'm shocked")
+  arr_tech.push("Flinch: I'm disapointed")
+  arr_tech.push("Flinch: That's not what I was expecting")
+  
   var str_out = iChoose(arr_tech);
   while(str_out === str_in){
     str_out = iChoose(arr_tech);
@@ -220,7 +258,7 @@ function delete_seller(){update_view(zero_ctx,'seller')}
 function init_seller(){
   var seller_ctx = {};
   seller_ctx['Remember to:'] = getTechnique(global_summary_ctx['Buyer Practice']) ;
-  seller_ctx['Break Even']   = ctx.val - Math.floor(ctx.val*Math.random()) ;
+  seller_ctx['Break Even']   = ctx.val - Math.floor(ctx.val*Math.random());
   seller_ctx['Type']         = getType() ;
   seller_ctx['Invoice Term'] = getTerm() ;
   seller_ctx['Frequency']    = getFrequency() ;
