@@ -211,18 +211,38 @@ function getTechnique(str_in) {
   arr_tech.push("Flinch: non verbal")
   arr_tech.push("Flinch: audible")
   arr_tech.push("Flinch: verbally")
+  arr_tech.push("Mirroring: repeat the last key words, 3@most")
   arr_tech.push("Nibble a tie, free delivery, a coffee")
   arr_tech.push("Summarize the Deal often")
   arr_tech.push("Pause, wait and analyse")
-  arr_tech.push("Fair")
   arr_tech.push("Win-Win")
+  arr_tech.push("Just say NO!")
+  arr_tech.push("Defer to authority")
   arr_tech.push("I propose.., Does that seem fair to you?")
   arr_tech.push("Flinch: Does that seem fair to you?")
   arr_tech.push("Flinch: I'm shocked")
   arr_tech.push("Flinch: I'm disapointed")
   arr_tech.push("Flinch: That's not what I was expecting")
   arr_tech.push("YES? -> How")
+  arr_tech.push("RECIPROCITY:<Movement Proposal> -> Yes, if ...")
   arr_tech.push("Why, Why, Why?")
+  arr_tech.push("Let the silence fill the space and oil the moves")
+  arr_tech.push("Appreciation > Request > Benefits p27 T2.1")
+  arr_tech.push("Focus at understanding the Interests behind Positions")
+  arr_tech.push("Does that seem acceptable to you? Is there anything you’d like to change?")
+  arr_tech.push("If the nibble costs you time and money, either decline, or insist that these costs be covered.")
+  arr_tech.push("Fair")
+// https://www.linkedin.com/pulse/10-hardball-tactics-you-can-use-negotiation-norman-murray/
+arr_tech.push(Object.keys({"HARDBALL: Extreme demands followed up by small, slow concessions.":"Don’t let a strong demand “anchor” your expectations. Be clear going in about your own demands, alternatives, and the bottom line – and don’t be rattled by an aggressive opponent"})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Commitment tactics":"Your opponent may say that his hands are tied or that he has only limited discretion in negotiating. Make sure that these commitment tactics are real."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Take-it-or-leave-it offers":"Offers are never non negotiable. Try ignoring the demand and focus on the content of the offer instead."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Inviting unreciprocated offers":"When you make an offer, wait for a counteroffer before reducing your demands. Don’t bid against yourself."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Trying to make the counterpart flinch.":"Your opponent keeps making demands, waiting for you to reach your breaking point. Don’t fall for it."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Personal insults and feather ruffling":"These personal attacks can feed on your insecurities and make you vulnerable. Take a break if you feel yourself getting flustered, or name their tactics."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Bluffing, puffing, and lying":"Exaggerating and misrepresenting facts can throw you off guard. Be polite but skeptical."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Threats and warnings":"Want to know how to deal with threats? The first step is recognizing threats and oblique warnings as the tactics they are, which can help you stand up to them."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Belittling your alternatives":"Have a firm sense of your best alternative to a negotiated agreement (BATNA) and don’t let your opponent shake your resolve."})[0]);
+arr_tech.push(Object.keys({"HARDBALL: Good cop, bad cop.":"One of your opponents is reasonable; the other is tough. Realize that they are working together, and get your own bad cop if you need one."})[0]);
   
   var str_out = iChoose(arr_tech);
   while(str_out === str_in){
