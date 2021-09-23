@@ -18,7 +18,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        <b>Hide it all</b>
+        <b>Step 1:</b>&nbsp;Let's agree to disagree
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -29,7 +29,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo" onclick="init_buyer()">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        <b>Buyer</b>
+        <b>Step 2:</b>&nbsp;Buyer
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -75,7 +75,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree" onclick="init_seller()">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        <b>Seller</b>
+        <b>Step 3:</b>&nbsp;Seller
       </button>
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -119,12 +119,24 @@
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour" onclick="init_summary()">
+    <h2 class="accordion-header" id="headingFour" onclick="negotiate()">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        <b>Summary</b>
+        <b>Step 4:</b>&nbsp;Haggle/Bargain/Negotiate
       </button>
     </h2>
     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <center>Negotiation closes in <h1><span id="time">05:00</span></h1></center>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive" onclick="init_summary()">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <b>Step 5:</b>&nbsp;Reflect
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <form>
           <div class="input-group flex-nowrap">
@@ -160,18 +172,6 @@
             <input id="in-summary-08" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-summary-08">
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive" onclick="negotiate()">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        <b>The 5 min timmer</b>
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <center>Negotiation closes in <h1><span id="time">05:00</span></h1></center>
       </div>
     </div>
   </div>
@@ -221,6 +221,8 @@ function getTechnique(str_in) {
   arr_tech.push("Flinch: I'm shocked")
   arr_tech.push("Flinch: I'm disapointed")
   arr_tech.push("Flinch: That's not what I was expecting")
+  arr_tech.push("YES? -> How")
+  arr_tech.push("Why, Why, Why?")
   
   var str_out = iChoose(arr_tech);
   while(str_out === str_in){
