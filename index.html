@@ -628,10 +628,10 @@ function init_buyer(){
   buyer_ctx['t-name'] = tech['name'];
   buyer_ctx['t-desc'] = tech['desc'];
 
-  buyer_ctx['yen-key'] = 'Your purse has:'
+  buyer_ctx['yen-key'] = 'Budget:'
   buyer_ctx['yen-val'] = ctx.yen + Math.floor(ctx.yen*Math.random()) ;
 
-  buyer_ctx['qty-key'] = 'I must buy at least:';
+  buyer_ctx['qty-key'] = 'Need:';
   buyer_ctx['qty-val'] = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
 
   buyer_ctx['make-key'] = 'Make:';
@@ -640,13 +640,13 @@ function init_buyer(){
   buyer_ctx['model-key'] = 'Model:';
   buyer_ctx['model-val'] = getType();
 
-  buyer_ctx['freq-key'] = 'I can buy:';
+  buyer_ctx['freq-key'] = 'Frequency:';
   buyer_ctx['freq-val'] = mapFrequency(ctx.freq+rX(3));
 
-  buyer_ctx['term-key'] = 'I can only pay from:';
+  buyer_ctx['term-key'] = 'Invoice:';
   buyer_ctx['term-val'] = mapFrequency(ctx.term-rX(3));
   
-  buyer_ctx['deli-key'] = 'Must be delivered until:';
+  buyer_ctx['deli-key'] = 'Delivered until:';
   buyer_ctx['deli-val'] = mapFrequency(ctx.deli+rX(3));
 
   global_summary_ctx['buyer-tech'] = tech
@@ -666,10 +666,10 @@ function init_seller(){
   seller_ctx['t-name'] = tech['name'];
   seller_ctx['t-desc'] = tech['desc'];
 
-  seller_ctx['yen-key'] = 'Your costs are:'
+  seller_ctx['yen-key'] = 'Costs:'
   seller_ctx['yen-val'] = ctx.yen - Math.floor(ctx.yen*Math.random()) ;
 
-  seller_ctx['qty-key'] = 'My current stock is:';
+  seller_ctx['qty-key'] = 'Stock:';
   seller_ctx['qty-val'] = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
 
   seller_ctx['make-key'] = 'Make:';
@@ -678,13 +678,13 @@ function init_seller(){
   seller_ctx['model-key'] = 'Model:';
   seller_ctx['model-val'] = getType() ;
 
-  seller_ctx['freq-key'] = 'We aim to establish relations:';
+  seller_ctx['freq-key'] = 'Frequency:';
   seller_ctx['freq-val'] = mapFrequency(ctx.freq-rX(3));
 
-  seller_ctx['term-key'] = 'Must be payed until:';
+  seller_ctx['term-key'] = 'Invoices:';
   seller_ctx['term-val'] = mapFrequency(ctx.term+rX(3));
 
-  seller_ctx['deli-key'] = 'I can only delivered by:';
+  seller_ctx['deli-key'] = 'Delivery:';
   seller_ctx['deli-val'] = mapFrequency(ctx.deli-rX(3));
 
   
