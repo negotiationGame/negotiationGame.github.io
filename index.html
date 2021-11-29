@@ -23,7 +23,7 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <center>Everything's safe</center>
-        <center>v.2021.11.29.1111</center>
+        <center>v.2021.11.29.1112</center>
         <center>Are you ready to go at it again?</center>
     </div>
   </div>
@@ -624,80 +624,82 @@ function init_summary(){
 }
 function delete_buyer(){update_view(zero_ctx,'buyer')}
 function init_buyer(){
-  var buyer_ctx = {};
-  var tech = getTechnique(global_summary_ctx['seller-tech'])
-  buyer_ctx['t-name'] = tech['name'];
-  buyer_ctx['t-desc'] = tech['desc'];
+  if(!global_summary_ctx['buyer-tech']){
+    var buyer_ctx = {};
+    var tech = getTechnique(global_summary_ctx['seller-tech'])
+    buyer_ctx['t-name'] = tech['name'];
+    buyer_ctx['t-desc'] = tech['desc'];
 
-  buyer_ctx['yen-key'] = 'Budget:'
-  buyer_ctx['yen-val'] = ctx.yen + Math.floor(ctx.yen*Math.random()) ;
+    buyer_ctx['yen-key'] = 'Budget:'
+    buyer_ctx['yen-val'] = ctx.yen + Math.floor(ctx.yen*Math.random()) ;
 
-  buyer_ctx['qty-key'] = 'Need:';
-  buyer_ctx['qty-val'] = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
+    buyer_ctx['qty-key'] = 'Need:';
+    buyer_ctx['qty-val'] = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
 
-  buyer_ctx['make-key'] = 'Make:';
-  buyer_ctx['make-val'] = getType();
+    buyer_ctx['make-key'] = 'Make:';
+    buyer_ctx['make-val'] = getType();
 
-  buyer_ctx['model-key'] = 'Model:';
-  buyer_ctx['model-val'] = getType();
+    buyer_ctx['model-key'] = 'Model:';
+    buyer_ctx['model-val'] = getType();
 
-  buyer_ctx['freq-key'] = 'Frequency:';
-  buyer_ctx['freq-val'] = mapFrequency(ctx.freq+rX(3));
+    buyer_ctx['freq-key'] = 'Frequency:';
+    buyer_ctx['freq-val'] = mapFrequency(ctx.freq+rX(3));
 
-  buyer_ctx['term-key'] = 'Invoice:';
-  buyer_ctx['term-val'] = mapFrequency(ctx.term-rX(3));
-  
-  buyer_ctx['deli-key'] = 'Delivered until:';
-  buyer_ctx['deli-val'] = mapFrequency(ctx.deli+rX(3));
+    buyer_ctx['term-key'] = 'Invoice:';
+    buyer_ctx['term-val'] = mapFrequency(ctx.term-rX(3));
+    
+    buyer_ctx['deli-key'] = 'Delivered until:';
+    buyer_ctx['deli-val'] = mapFrequency(ctx.deli+rX(3));
 
-  global_summary_ctx['buyer-tech'] = tech
-  global_summary_ctx['buyer-yen'] = buyer_ctx['yen-val']
-  global_summary_ctx['buyer-qty'] = buyer_ctx['qty-val']
-  global_summary_ctx['-'] = '-'
+    global_summary_ctx['buyer-tech'] = tech
+    global_summary_ctx['buyer-yen'] = buyer_ctx['yen-val']
+    global_summary_ctx['buyer-qty'] = buyer_ctx['qty-val']
 
   /* ************************************************************** */
 
   update_view(buyer_ctx ,'buyer' );
   //global_buyer_timer = setTimeout( ()=>{update_view(zero_ctx,'buyer')}, 20*1000);
+  }
 }
 function delete_seller(){update_view(zero_ctx,'seller')}
 function init_seller(){
-  var seller_ctx = {};
-  var tech = getTechnique(global_summary_ctx['buyer-tech'])
-  seller_ctx['t-name'] = tech['name'];
-  seller_ctx['t-desc'] = tech['desc'];
+  if(!global_summary_ctx['seller-tech']){
+    var seller_ctx = {};
+    var tech = getTechnique(global_summary_ctx['buyer-tech'])
+    seller_ctx['t-name'] = tech['name'];
+    seller_ctx['t-desc'] = tech['desc'];
 
-  seller_ctx['yen-key'] = 'Costs:'
-  seller_ctx['yen-val'] = ctx.yen - Math.floor(ctx.yen*Math.random()) ;
+    seller_ctx['yen-key'] = 'Costs:'
+    seller_ctx['yen-val'] = ctx.yen - Math.floor(ctx.yen*Math.random()) ;
 
-  seller_ctx['qty-key'] = 'Stock:';
-  seller_ctx['qty-val'] = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
+    seller_ctx['qty-key'] = 'Stock:';
+    seller_ctx['qty-val'] = ctx.qty + Math.floor(ctx.qty*Math.random()) ;
 
-  seller_ctx['make-key'] = 'Make:';
-  seller_ctx['make-val'] = getType() ;
+    seller_ctx['make-key'] = 'Make:';
+    seller_ctx['make-val'] = getType() ;
 
-  seller_ctx['model-key'] = 'Model:';
-  seller_ctx['model-val'] = getType() ;
+    seller_ctx['model-key'] = 'Model:';
+    seller_ctx['model-val'] = getType() ;
 
-  seller_ctx['freq-key'] = 'Frequency:';
-  seller_ctx['freq-val'] = mapFrequency(ctx.freq-rX(3));
+    seller_ctx['freq-key'] = 'Frequency:';
+    seller_ctx['freq-val'] = mapFrequency(ctx.freq-rX(3));
 
-  seller_ctx['term-key'] = 'Invoices:';
-  seller_ctx['term-val'] = mapFrequency(ctx.term+rX(3));
+    seller_ctx['term-key'] = 'Invoices:';
+    seller_ctx['term-val'] = mapFrequency(ctx.term+rX(3));
 
-  seller_ctx['deli-key'] = 'Delivery:';
-  seller_ctx['deli-val'] = mapFrequency(ctx.deli-rX(3));
+    seller_ctx['deli-key'] = 'Delivery:';
+    seller_ctx['deli-val'] = mapFrequency(ctx.deli-rX(3));
 
-  
-  global_summary_ctx['seller-tech'] = tech
-  global_summary_ctx['seller-yen'] = seller_ctx['yen-val']
-  global_summary_ctx['seller-qty'] = seller_ctx['qty-val']
-  global_summary_ctx['-'] = '-'
+    
+    global_summary_ctx['seller-tech'] = tech
+    global_summary_ctx['seller-yen'] = seller_ctx['yen-val']
+    global_summary_ctx['seller-qty'] = seller_ctx['qty-val']
 
-  /* ************************************************************** */
+    /* ************************************************************** */
 
-  update_view(seller_ctx,'seller');
-  //global_seller_timer = setTimeout( ()=>{update_view(zero_ctx,'seller')}, 20*1000);
+    update_view(seller_ctx,'seller');
+    //global_seller_timer = setTimeout( ()=>{update_view(zero_ctx,'seller')}, 20*1000);
+  }
 }
 
 function startTimer(duration, display) {
