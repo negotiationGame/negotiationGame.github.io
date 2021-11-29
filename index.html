@@ -130,7 +130,7 @@
             <input id="in-seller-deli" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-deli">
             <span class="input-group-text bg-warning">C</span>
           </div>
-          <button type="button" class="btn btn-danger btn-block w-100" onclick="delete_buyer()">Hide Info</button>
+          <button type="button" class="btn btn-danger btn-block w-100" onclick="delete_seller()">Hide Info</button>
           <div class="card m-3">
             <div id="txt-seller-t-name" class="card-header">
               Card Header
@@ -531,16 +531,10 @@ const ctx = {}
       console.log(global_frequency_option_range.length)
       console.log(ctx.freq)
 const zero_ctx = {};
-      zero_ctx['??????']=''
-      zero_ctx['?????']=''
-      zero_ctx['????']=''
-      zero_ctx['???']=''
-      zero_ctx['??']=''
-      zero_ctx['?']=''
 
 function update_view(o,str_key){
-  $('#txt-'+str_key+'-t-name').text( o['t-name'] );
-  $('#txt-'+str_key+'-t-desc').text( o['t-desc'] );
+  $('#txt-'+str_key+'-t-name').text( ''+o['t-name'] );
+  $('#txt-'+str_key+'-t-desc').text( ''+o['t-desc'] );
 
   $('#lb-'+str_key+'-yen').text( o['yen-key'] );
   $('#in-'+str_key+'-yen').val(  o['yen-val'] );
