@@ -1,814 +1,397 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>We Have a Deal!</title>
+  <!--
+  <link rel="stylesheet" href="../assets/bootstrap.min.css">
+  <link rel="stylesheet" href="./index.css">
+  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style type="text/css">
+.banner {
+  padding: 0;
+  background-color: #52575c;
+  color: white;
+}
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
-    <title>TheNegotiationGame</title>
-  </head>
-  <body>
+.banner-text {
+  padding: 8px 20px;
+  margin: 0;
+}
 
 
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        <b>Step 1:</b>&nbsp;Let's agree to disagree
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <center>Everything's safe</center>
-        <center>v.2021.11.30.1500</center>
-        <center>Are you ready to go at it again?</center>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo" onclick="init_buyer()">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        <b>Step 2:</b>&nbsp;Buyer
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <form>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-coins"></i></span>
-            <span id="lb-buyer-yen" class="input-group-text bg-primary"></span>
-            <input id="in-buyer-yen" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-yen">
-            <span class="input-group-text"><i class="fas fa-yen-sign"></i></span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-boxes"></i></span>
-            <span id="lb-buyer-qty" class="input-group-text bg-info"></span>
-            <input id="in-buyer-qty" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-qty">
-            <span class="input-group-text">units</span>
-            <span class="input-group-text bg-success">S</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-temperature-high"></i></span>
-            <span id="lb-buyer-mkt" class="input-group-text bg-info"></span>
-            <input id="in-buyer-mkt" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-mkt">
-            <span class="input-group-text">yen/units</span>
-            <span class="input-group-text bg-success">S</span>
-          </div>
-          <!--
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
-            <span id="lb-buyer-freq" class="input-group-text"></span>
-            <input id="in-buyer-freq" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-freq">
-            <span class="input-group-text bg-primary">M</span>
-          </div>
-        -->
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-history"></i></span>
-            <span id="lb-buyer-term" class="input-group-text"></span>
-            <input id="in-buyer-term" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-term">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
-            <span id="lb-buyer-deli" class="input-group-text"></span>
-            <input id="in-buyer-deli" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-deli">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
-            <span id="lb-buyer-deti" class="input-group-text"></span>
-            <input id="in-buyer-deti" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-deti">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-          <button type="button" class="btn btn-danger btn-block w-100" onclick="delete_buyer()">Hide Info</button>
-          <div class="card m-3">
-            <div id="txt-buyer-t-name" class="card-header">
-              Card Header
-            </div>
-            <div id="txt-buyer-t-desc"class="card-body">
-              Card Body
-            </div>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span id="lb-buyer-make" class="input-group-text"></span>
-            <input id="in-buyer-make" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-make">
-            <span class="input-group-text bg-danger">W</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span id="lb-buyer-model" class="input-group-text"></span>
-            <input id="in-buyer-model" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-buyer-model">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree" onclick="init_seller()">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        <b>Step 3:</b>&nbsp;Seller
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <form>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-coins"></i></span>
-            <span id="lb-seller-yen" class="input-group-text bg-primary"></span>
-            <input id="in-seller-yen" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-yen">
-            <span class="input-group-text"><i class="fas fa-yen-sign"></i></span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-boxes"></i></span>
-            <span id="lb-seller-qty" class="input-group-text bg-info"></span>
-            <input id="in-seller-qty" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-qty">
-            <span class="input-group-text">units</span>
-            <span class="input-group-text bg-success">S</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-temperature-high"></i></span>
-            <span id="lb-seller-mkt" class="input-group-text bg-info"></span>
-            <input id="in-seller-mkt" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-mkt">
-            <span class="input-group-text">yen/units</span>
-            <span class="input-group-text bg-success">S</span>
-          </div>
-          <!--
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
-            <span id="lb-seller-freq" class="input-group-text"></span>
-            <input id="in-seller-freq" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-freq">
-            <span class="input-group-text bg-primary">M</span>
-          </div>
-        -->
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-history"></i></span>
-            <span id="lb-seller-term" class="input-group-text"></span>
-            <input id="in-seller-term" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-term">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
-            <span id="lb-seller-deli" class="input-group-text"></span>
-            <input id="in-seller-deli" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-deli">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
-            <span id="lb-seller-deti" class="input-group-text"></span>
-            <input id="in-seller-deti" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-deti">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-          <button type="button" class="btn btn-danger btn-block w-100" onclick="delete_seller()">Hide Info</button>
-          <div class="card m-3">
-            <div id="txt-seller-t-name" class="card-header">
-              Card Header
-            </div>
-            <div id="txt-seller-t-desc"class="card-body">
-              Card Body
-            </div>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span id="lb-seller-make" class="input-group-text"></span>
-            <input id="in-seller-make" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-make">
-            <span class="input-group-text bg-danger">W</span>
-          </div>
-          <div class="input-group flex-nowrap">
-            <span id="lb-seller-model" class="input-group-text"></span>
-            <input id="in-seller-model" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-seller-model">
-            <span class="input-group-text bg-warning">C</span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFour" onclick="negotiate()">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-        <b>Step 4:</b>&nbsp;Haggle/Bargain/Negotiate
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <center>Negotiation closes in <h1><span id="time">05:00</span></h1></center>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingFive" onclick="init_summary()">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-        <b>Step 5:</b>&nbsp;Reflect
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <form>
-<table class="table table-striped table-dark text-center">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Seller</th>
-      <th scope="col">25%</th>
-      <th scope="col">50%</th>
-      <th scope="col">75%</th>
-      <th scope="col">Buyer</th>
-      <th scope="col">ZoPA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-        <span class="input-group-text"><i class="fas fa-yen-sign"></i></span>
-      </th>
-      <td><span id="tb-seller-yen"></span></td>
-      <td><span id="tb-25-yen"></span></td>
-      <td><span id="tb-50-yen"></span></td>
-      <td><span id="tb-75-yen"></span></td>
-      <td><span id="tb-buyer-yen"></span></td>
-      <td><span id="tb-zopa-yen"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <span class="input-group-text"><i class="fas fa-boxes"></i></span>
-      </th>
-      <td><span id="tb-seller-qty"></span></td>
-      <td><span id="tb-25-qty"></span></td>
-      <td><span id="tb-50-qty"></span></td>
-      <td><span id="tb-75-qty"></span></td>
-      <td><span id="tb-buyer-qty"></span></td>
-      <td><span id="tb-zopa-qty"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <span class="input-group-text"><i class="fas fa-temperature-high"></i></span>
-      </th>
-      <td><span id="tb-seller-mkt"></span></td>
-      <td><span id="tb-25-mkt"></span></td>
-      <td><span id="tb-50-mkt"></span></td>
-      <td><span id="tb-75-mkt"></span></td>
-      <td><span id="tb-buyer-mkt"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
-      </th>
-      <td><span id="tb-seller-freq"></span></td>
-      <td><span id="tb-25-freq"></span></td>
-      <td><span id="tb-50-freq"></span></td>
-      <td><span id="tb-75-freq"></span></td>
-      <td><span id="tb-buyer-freq"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <span class="input-group-text"><i class="fas fa-history"></i></span>
-      </th>
-      <td><span id="tb-seller-term"></span></td>
-      <td><span id="tb-25-term"></span></td>
-      <td><span id="tb-50-term"></span></td>
-      <td><span id="tb-75-term"></span></td>
-      <td><span id="tb-buyer-term"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
-      </th>
-      <td><span id="tb-seller-deli"></span></td>
-      <td><span id="tb-25-deli"></span></td>
-      <td><span id="tb-50-deli"></span></td>
-      <td><span id="tb-75-deli"></span></td>
-      <td><span id="tb-buyer-deli"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">Make</th>
-      <td><span id="tb-seller-make"></span></td>
-      <td><span id="tb-25-make"></span></td>
-      <td><span id="tb-50-make"></span></td>
-      <td><span id="tb-75-make"></span></td>
-      <td><span id="tb-buyer-make"></span></td>
-    </tr>
-    <tr>
-      <th scope="row">Model</th>
-      <td><span id="tb-seller-model"></span></td>
-      <td><span id="tb-25-model"></span></td>
-      <td><span id="tb-50-model"></span></td>
-      <td><span id="tb-75-model"></span></td>
-      <td><span id="tb-buyer-model"></span></td>
-    </tr>
-  </tbody>
-</table>
+#join-form {
+  margin-top: 10px;
+}
+
+.tips {
+  font-size: 12px;
+  margin-bottom: 2px;
+  color: gray;
+}
+
+.join-info-text {
+  margin-bottom: 2px;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.player {
+  width: 480px;
+  height: 320px;
+}
+
+.player-name {
+  margin: 8px 0;
+}
+
+#success-alert, #success-alert-with-token {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .player {
+    width: 320px;
+    height: 240px;
+  }
+}
+  </style>
+</head>
+<body>
+
 <!--
-          <div class="input-group flex-nowrap">
-            <span id="lb-summary-01" class="input-group-text"></span>
-            <input id="in-summary-01" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="lb-summary-01">
-          </div>
--->
-          
-        </form>
+  This page interacts with the Agora Voice Call for Web Next Generation SDK to easily create Video Call
+  functionality in a Web page.
 
+  This HTML page imports the next generation Agora Video SDK for Web from
+  https://download.agora.io/sdk/release/AgoraRTC_N.js and local functionality from cloudProxy.js.
+
+  The form in this page passes data and actions input by the user to cloudProxy.js. basicVideoCall
+  creates an AgoraRTC client which adds and and removes local and remote users to a specific channel.
+-->
+
+<!--
+  Create the banner at the top of the page.
+-->
+<div class="container-fluid banner">
+  <p class="banner-text">Basic Video Call</p>
+  <a style="color: rgb(255, 255, 255);fill: rgb(255, 255, 255);fill-rule: evenodd; position: absolute; right: 10px; top: 4px;"
+     class="Header-link " href="https://github.com/AgoraIO/API-Examples-Web/tree/main/Demo">
+    <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+  </a>
+</div>
+
+<!--
+  When a user tries to join a Video Call without supplying an AccessToken, this button
+  calls #success-alert in cloudProxy.js. #success-alert refreshes this page with the
+  user information.
+-->
+<div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Congratulations!</strong><span> You can invite others join this channel by click </span><a href="" target="_blank">here</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!--
+  When a user successfully joins a Video Call channel with an AccessToken, this section displays
+  a banner with a close button.
+-->
+<div id="success-alert-with-token" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Congratulations!</strong><span> Joined room successfully. </span>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!--
+  When a user successfully joins a Video Call channel with an AccessToken, this section displays
+  a banner with a close button.
+-->
+<div id="success-alert-with-token" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Congratulations!</strong><span> Joined room successfully. </span>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="container">
+
+  <!--
+    Input fields so the user can securely join a Video Call channel.
+  -->
+  <form id="join-form">
+    <div class="row join-info-group">
+      <div class="col-sm">
+        <p class="join-info-text">APP ID</p>
+        <input id="appid" type="text" placeholder="Enter the appid" required>
+        <p class="tips">You find your APP ID in the <a href="https://console.agora.io/projects">Agora Console</a></p>
       </div>
+      <div class="col-sm">
+        <p class="join-info-text">Token(optional)</p>
+        <input id="token" type="text" placeholder="Enter the app token">
+        <p class="tips">To create a temporary token, <a href="https://console.agora.io/projects">edit your project</a> in Agora Console.</p>
+      </div>
+      <div class="col-sm">
+        <p class="join-info-text">Channel Name</p>
+        <input id="channel" type="text" placeholder="Enter the channel name" required>
+        <p class="tips">You create a channel when you create a temporary token. You guessed it, in <a href="https://console.agora.io/projects">Agora Console</a></p>
+      </div>
+      <div class="col-sm">
+        <p class="join-info-text">User ID(optional)</p>
+        <input id="uid" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="Enter the user ID">
+      </div>
+    </div>
+
+    <!--
+      Join or leave a Video Call channel.
+    -->
+    <div class="button-group">
+      <button id="join" type="submit" class="btn btn-primary btn-sm">Join</button>
+      <button id="leave" type="button" class="btn btn-primary btn-sm" disabled>Leave</button>
+    </div>
+  </form>
+  <!--
+    This local media splayer is enabled when the user has successfully joined a Video Call channel.
+  -->
+  <div class="row video-group">
+    <div class="col">
+      <p id="local-player-name" class="player-name"></p>
+      <div id="local-player" class="player"></div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+      <div id="remote-playerlist"></div>
     </div>
   </div>
 </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    -->
+<!--
+  Import the Agora Video Call SDK for Web and local calls to it.
+-->
+<!-- <script src="../assets/jquery-3.4.1.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- <script src="../assets/bootstrap.bundle.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+<!--
+<script src="./basicVideoCall.js"></script>
+-->
 <script type="text/javascript">
-function cl(m){ console.log(m) }
-function rX(dim){ return Math.floor((Math.random() * dim) + 1)}
-function r10(){ return rX(10); }
-function r100(){ return rX(100); }
-function r1000(){ return rX(1000); }
-function iChoose(items){ return items[Math.floor(Math.random()*items.length)]; }
-
-const global_frequency_option_range = '0,1,2,3,4,5,7,14,15,30,60,90,180,365'.split(',')
-
-function mapFrequency(int_idx) {
-  cl('mapFrequency('+int_idx+')')
-  var str_key = global_frequency_option_range[int_idx]
-  if(int_idx >= global_frequency_option_range.length){
-    str_key = global_frequency_option_range[global_frequency_option_range.length-1]
-  }
-  if(int_idx < 0){
-    str_key = global_frequency_option_range[0]
-  }
-  cl('str_key = '+str_key)
-  var map = {}
-  map['0'] = 'One off'
-  map['1'] = 'Every day!'
-  map['7'] = 'Weekly'
-  map['14'] = 'Bi-Weekly'
-  map['30'] = 'Monthly'
-  map['60'] = 'Bi-Monthly'
-  map['90'] = 'Quarterly (every 3 months)'
-  map['180'] = 'Every 6 months'
-  map['365'] = 'Yearly'
-  var str_out = str_key+' days.'
-  if (str_key in map){
-    str_out = map[str_key]
-  }
-  return str_out;
-}
-function getType()      { return iChoose('Alfa,Bravo,Charlie,Delta,Echo,Foxtrot,Golf,Hotel,India,Juliett,Kilo,Lima,Mike,November,Oscar,Papa,Quebec,Romeo,Sierra,Tango,Uniform,Victor,Whiskey,X-ray,Yankee,Zulu'.split(',')); }
-function getLocation()      { return iChoose('Loading at origin,Export customs declaration,Carriage to port of export,Unloading of truck in port of export,Loading on vessel/airplane in port of export,Carriage (sea/air) to port of import,Insurance Unloading in port of import,Loading on truck in port of import,Carriage to place of destination,Import customs clearance,Import duties and taxes,Unloading at destination'.split(',')); }
-function getTechnique(str_in) {
-  var arr_tech = []
-  arr_tech.push({
-    "name":"Assert",
-    "desc":"I can get it cheaper somewhere else..."
-  });
-  arr_tech.push({
-    "name":"NO!",
-    "desc":"Just say NO!"
-  });
-  arr_tech.push({
-    "name":"Moral Obligation",
-    "desc":"Is that the best you can do? <PAUSE> <REPLY> Is that really, the very best you can do?"
-  });
-  arr_tech.push({
-    "name":"Moral Obligation",
-    "desc":"Are you telling me that you've never sold that item for less than that amount? ever?"
-  });
-  arr_tech.push({
-    "name":"Low ball",
-    "desc":" 100 dollar -> I can give you 50 dollar, cash, right now! (Reduce inventory cost, CC Merchant fees, Instant gratification, etc.)"
-  });
-  arr_tech.push({
-    "name":"Expand",
-    "desc":"Use Open ended questions"
-  });
-  arr_tech.push({
-    "name":"Narrow",
-    "desc":"Use Closed ended questions. Yes/No"
-  });
-  arr_tech.push({
-    "name":"Flinch",
-    "desc":"non verbal"
-  });
-  arr_tech.push({
-    "name":"Flinch",
-    "desc":"audible"
-  });
-  arr_tech.push({
-    "name":"Flinch",
-    "desc":"verbally"
-  });
-  arr_tech.push({
-    "name":"Mirroring",
-    "desc":"repeat the last key words, 3@most"
-  });
-  arr_tech.push({
-    "name":"the Nibble",
-    "desc":"Nibble a tie, free delivery, a coffee"
-  });
-  arr_tech.push({
-    "name":"in Summary",
-    "desc":"Summarize the Deal often"
-  });
-  arr_tech.push({
-    "name":"Chill",
-    "desc":"Pause, wait and analyse"
-  });
-  arr_tech.push({
-    "name":"Win-Win",
-    "desc":""
-  });
-
-  arr_tech.push({
-    "name":"Defer to authority",
-    "desc":"I need to check with.."
-  });
-  arr_tech.push({
-    "name":"F.A.I.R.",
-    "desc":"I propose.., Does that seem fair to you?"
-  });
-  arr_tech.push({
-    "name":"F.A.I.R.",
-    "desc":"Does that seem fair to you?"
-  });
-  arr_tech.push({
-    "name":"Flinch",
-    "desc":"I'm shocked"
-  });
-  arr_tech.push({
-    "name":"Flinch",
-    "desc":"I'm disapointed"
-  });
-  arr_tech.push({
-    "name":"Flinch",
-    "desc":"That's not what I was expecting"
-  });
-  arr_tech.push({
-    "name":"Implementation",
-    "desc":"YES? -> How"
-  });
-  arr_tech.push({
-    "name":"RECIPROCITY",
-    "desc":"<Movement Proposal> -> Yes, if ..."
-  });
-  arr_tech.push({
-    "name":"Root Cause Analisys (RCA)",
-    "desc":"Why, Why, Why?"
-  });
-  arr_tech.push({
-    "name":"Silence",
-    "desc":"Let the silence fill the space and oil the moves"
-  });
-  arr_tech.push({
-    "name":"Appreciation > Request > Benefits p27 T2.1"
-  });
-  arr_tech.push({
-    "name":"Chill",
-    "desc":"Focus at understanding the Interests behind Positions"
-  });
-  arr_tech.push({
-    "name":"Ethics",
-    "desc":"Does that seem acceptable to you? Is there anything you’d like to change?"
-  });
-  arr_tech.push({
-    "name":"Ethics",
-    "desc":"If the nibble costs you time and money, either decline, or insist that these costs be covered."
-  });
-  arr_tech.push({
-    "name":"Fair"
-  });
-// https://www.linkedin.com/pulse/10-hardball-tactics-you-can-use-negotiation-norman-murray/
-arr_tech.push({
-  "name":"HARDBALL: Extreme demands followed up by small, slow concessions.",
-  "desc":"Don’t let a strong demand “anchor” your expectations. Be clear going in about your own demands, alternatives, and the bottom line – and don’t be rattled by an aggressive opponent"
-})
-arr_tech.push({
-  "name":"HARDBALL: Commitment tactics",
-  "desc":"Your opponent may say that his hands are tied or that he has only limited discretion in negotiating. Make sure that these commitment tactics are real."
-});
-arr_tech.push({
-  "name":"HARDBALL: Take-it-or-leave-it offers",
-  "desc":"Offers are never non negotiable. Try ignoring the demand and focus on the content of the offer instead."
-});
-arr_tech.push({
-  "name":"HARDBALL: Inviting unreciprocated offers",
-  "desc":"When you make an offer, wait for a counteroffer before reducing your demands. Don’t bid against yourself."
-});
-arr_tech.push({
-  "name":"HARDBALL: Trying to make the counterpart flinch.",
-  "desc":"Your opponent keeps making demands, waiting for you to reach your breaking point. Don’t fall for it."
-});
-arr_tech.push({
-  "name":"HARDBALL: Personal insults and feather ruffling",
-  "desc":"These personal attacks can feed on your insecurities and make you vulnerable. Take a break if you feel yourself getting flustered, or name their tactics."
-});
-arr_tech.push({
-  "name":"HARDBALL: Bluffing, puffing, and lying",
-  "desc":"Exaggerating and misrepresenting facts can throw you off guard. Be polite but skeptical."
-});
-arr_tech.push({
-  "name":"HARDBALL: Threats and warnings",
-  "desc":"Want to know how to deal with threats? The first step is recognizing threats and oblique warnings as the tactics they are, which can help you stand up to them."
-});
-arr_tech.push({
-  "name":"HARDBALL: Belittling your alternatives",
-  "desc":"Have a firm sense of your best alternative to a negotiated agreement (BATNA) and don’t let your opponent shake your resolve."
-});
-arr_tech.push({
-  "name":"HARDBALL: Good cop, bad cop.",
-  "desc":"One of your opponents is reasonable; the other is tough. Realize that they are working together, and get your own bad cop if you need one."
-});
-
-  arr_tech.push({
-    "name":"Use Because to jump the line",
-    "desc":""
-  });
-  arr_tech.push({
-    "name":"the No ladder",
-    "desc":""
-  });
-  arr_tech.push({
-    "name":"the Yes ladder",
-    "desc":""
-  });
-  arr_tech.push({
-    "name":"GateKeeper",
-    "desc":" Have you ever made an exemption? No, I'm sorry we can't do that Would it be possible to just make one exception, this time?"
-  });
-  arr_tech.push({
-    "name":"ValidateHim",
-    "desc":" If I was in your position, I'd feel the same exact way"
-  });
-  arr_tech.push({
-    "name":"MSU",
-    "desc":"The situation drive strategy"
-  });
-  arr_tech.push({
-    "name":"Ghosted? -> Have you given up on this project? (setting this amicably?)",
-    "desc":"Be ready with a Summary (it calms you down) and then listen"
-  });
-  arr_tech.push({
-    "name":"No",
-    "desc":"Would it be horrible if we made this agreement?"
-  });
-
-/*"So, obviously I'd love to get this job, but when you are thinking down the line, wether you are hiring me or you are hiring someone else, how will you know a year from now, wether or not you have made the right choice, What will that person had to have done to have been an excelent hire?"*/
-
-  var str_out = iChoose(arr_tech);
-  while(str_out === str_in){
-    str_out = iChoose(arr_tech);
-  }
-  return str_out
-}
-
-var global_timer;
-//var global_buyer_timer;
-//var global_seller_timer;
-function clear_all(){
-  clearInterval(global_timer);
-  //clearInterval(global_buyer_timer);
-  //clearInterval(global_seller_timer);
-}
-var global_summary_ctx={};
-
-const ctx = {}
-      ctx.yen  = r1000()
-      ctx.qty  = r1000()
-      ctx.mkt  = ctx.yen/ctx.qty
-      ctx.freq = rX(global_frequency_option_range.length);//random
-      ctx.deli = rX(global_frequency_option_range.length);//random
-      ctx.term = rX(global_frequency_option_range.length);//random
-      console.log(global_frequency_option_range.length)
-      console.log(ctx.freq)
-const zero_ctx = {};
-
-function update_view(o,str_key){
-  $('#txt-'+str_key+'-t-name').text( ''+o['t-name'] );
-  $('#txt-'+str_key+'-t-desc').text( ''+o['t-desc'] );
-
-  $('#lb-'+str_key+'-yen').text( o['yen-key'] );
-  $('#in-'+str_key+'-yen').val(  o['yen-val'] );
-  $('#tb-'+str_key+'-yen').text( o['yen-val'] );
-
-  $('#lb-'+str_key+'-mkt').text( o['mkt-key'] );
-  $('#in-'+str_key+'-mkt').val(  o['mkt-val'] );
-  $('#tb-'+str_key+'-mkt').text( o['mkt-val'] );
   
-  $('#lb-'+str_key+'-qty').text( o['qty-key'] );
-  $('#in-'+str_key+'-qty').val(  o['qty-val'] );
-  $('#tb-'+str_key+'-qty').text( o['qty-val'] );
+/*
+ *  These procedures use Agora Video Call SDK for Web to enable local and remote
+ *  users to join and leave a Video Call channel managed by Agora Platform.
+ */
 
-  $('#lb-'+str_key+'-freq').text( o['freq-key'] );
-  $('#in-'+str_key+'-freq').val(  o['freq-val'] );
-  $('#tb-'+str_key+'-freq').text(  o['freq-val'] );
+/*
+ *  Create an {@link https://docs.agora.io/en/Video/API%20Reference/web_ng/interfaces/iagorartcclient.html|AgoraRTCClient} instance.
+ *
+ * @param {string} mode - The {@link https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/clientconfig.html#mode| streaming algorithm} used by Agora SDK.
+ * @param  {string} codec - The {@link https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/clientconfig.html#codec| client codec} used by the browser.
+ */
+var client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
-  $('#lb-'+str_key+'-term').text( o['term-key'] );
-  $('#in-'+str_key+'-term').val(  o['term-val'] );
-  $('#tb-'+str_key+'-term').text( o['term-val'] );
-
-  $('#lb-'+str_key+'-deli').text( o['deli-key'] );
-  $('#in-'+str_key+'-deli').val(  o['deli-val'] );
-  $('#tb-'+str_key+'-deli').text( o['deli-val'] );
-
-  $('#lb-'+str_key+'-deti').text( o['deti-key'] );
-  $('#in-'+str_key+'-deti').val(  o['deti-val'] );
-  $('#tb-'+str_key+'-deti').text( o['deti-val'] );
-
-  $('#lb-'+str_key+'-make').text( o['make-key'] );
-  $('#in-'+str_key+'-make').val(  o['make-val'] );
-  $('#tb-'+str_key+'-make').text( o['make-val'] );
-
-  $('#lb-'+str_key+'-model').text( o['model-key'] );
-  $('#in-'+str_key+'-model').val(  o['model-val'] );
-  $('#tb-'+str_key+'-model').text( o['model-val'] );
-
-  /*
-  var idx=0;
-  Object.keys(o).forEach((o_key)=>{
-    idx++;
-    $('#lb-'+str_key+'-0'+idx).text( o_key );
-    $('#in-'+str_key+'-0'+idx).val( o[o_key] );
-    console.log(o_key + ' : ' + o[o_key])
-  })
-  */
-}
-
-function init_summary(){
-  'yen,qty'.split(',').forEach(function(key){
-    yen_min = global_summary_ctx['seller-'+key]
-    yen_max = global_summary_ctx['buyer-'+key]
-
-    yen_zopa = yen_max - yen_min
-
-    yen_zopa_50 = yen_zopa/2
-    yen_zopa_25 = yen_zopa_50/2
-
-    $('#tb-25-'+key).text( (yen_min + yen_zopa_25).toFixed(2) );
-    $('#tb-50-'+key).text( (yen_min + yen_zopa_50).toFixed(2) );
-    $('#tb-75-'+key).text( (yen_min + yen_zopa_50 + yen_zopa_25).toFixed(2) );
-    $('#tb-zopa-'+key).text( Math.abs(yen_zopa_50).toFixed(0) );
-  });
-}
-function delete_buyer(){update_view(zero_ctx,'buyer')}
-function init_buyer(){
-  if(!global_summary_ctx['buyer-tech']){
-    var buyer_ctx = {};
-    var tech = getTechnique(global_summary_ctx['seller-tech'])
-    buyer_ctx['t-name'] = tech['name'];
-    buyer_ctx['t-desc'] = tech['desc'];
-
-    buyer_ctx['yen-key'] = 'Budget:'
-    buyer_ctx['yen-val'] = ctx.yen + Math.ceil(ctx.yen*Math.random()) ;
-
-    buyer_ctx['qty-key'] = 'Need:';
-    buyer_ctx['qty-val'] = ctx.qty - Math.floor(ctx.qty*Math.random()) ;
-
-    buyer_ctx['mkt-key'] = 'Market'
-    buyer_ctx['mkt-val'] = (ctx.mkt + Math.ceil(ctx.mkt*Math.random())).toFixed(2) ;
-    buyer_ctx['mkt-val'] = '('+buyer_ctx['mkt-val']+' yen/unit) x (' + buyer_ctx['qty-val'] + ' units) = ('+(parseFloat(buyer_ctx['mkt-val'])*parseInt(buyer_ctx['qty-val'])).toFixed(2) +' yens )'
-
-    buyer_ctx['make-key'] = 'Make:';
-    buyer_ctx['make-val'] = getType();
-
-    buyer_ctx['model-key'] = 'Model:';
-    buyer_ctx['model-val'] = getType();
-
-    buyer_ctx['freq-key'] = 'Frequency:';
-    buyer_ctx['freq-val'] = mapFrequency(ctx.freq+rX(3));
-
-    buyer_ctx['term-key'] = 'Min Invoicable:';
-    buyer_ctx['term-val'] = mapFrequency(ctx.term-rX(3)) + ' ( upfront ' + rX(50)+'%)';
-    
-    buyer_ctx['deli-key'] = 'Delivery location:'; // best for me is at my house
-    buyer_ctx['deli-val'] = getLocation();
-
-    buyer_ctx['deti-key'] = 'Max Delivery time:';
-    buyer_ctx['deti-val'] = mapFrequency(ctx.deli+rX(3));
-
-    global_summary_ctx['buyer-tech'] = tech
-    global_summary_ctx['buyer-yen'] = buyer_ctx['yen-val']
-    global_summary_ctx['buyer-qty'] = buyer_ctx['qty-val']
-
-  /* ************************************************************** */
-
-  update_view(buyer_ctx ,'buyer' );
-  //global_buyer_timer = setTimeout( ()=>{update_view(zero_ctx,'buyer')}, 20*1000);
-  }
-}
-function delete_seller(){update_view(zero_ctx,'seller')}
-function init_seller(){
-  if(!global_summary_ctx['seller-tech']){
-    var seller_ctx = {};
-    var tech = getTechnique(global_summary_ctx['buyer-tech'])
-    seller_ctx['t-name'] = tech['name'];
-    seller_ctx['t-desc'] = tech['desc'];
-
-    seller_ctx['yen-key'] = 'Costs:'
-    seller_ctx['yen-val'] = ctx.yen - Math.floor(ctx.yen*Math.random()) ;
-
-    seller_ctx['qty-key'] = 'Stock:';
-    seller_ctx['qty-val'] = ctx.qty + Math.ceil(ctx.qty*Math.random()) ;
-
-    seller_ctx['mkt-key'] = 'Market'
-    seller_ctx['mkt-val'] = (ctx.mkt - Math.floor(ctx.mkt*Math.random())).toFixed(2) ;
-    seller_ctx['mkt-val'] = '('+seller_ctx['mkt-val']+' yen/unit) x (' + seller_ctx['qty-val'] + ' units) = ('+(parseFloat(seller_ctx['mkt-val'])*parseInt(seller_ctx['qty-val'])).toFixed(2) +' yens )'
-
-    seller_ctx['make-key'] = 'Make:';
-    seller_ctx['make-val'] = getType() ;
-
-    seller_ctx['model-key'] = 'Model:';
-    seller_ctx['model-val'] = getType() ;
-
-    seller_ctx['freq-key'] = 'Frequency:';
-    seller_ctx['freq-val'] = mapFrequency(ctx.freq-rX(3));
-
-    seller_ctx['term-key'] = 'Max Invoice payment:'; // best for me is now
-    seller_ctx['term-val'] = mapFrequency(ctx.term+rX(3)) + ' ( upfront ' + rX(50)+'%)';
-
-    seller_ctx['deli-key'] = 'Ideal Delivery location:'; // best for me is at my factory
-    seller_ctx['deli-val'] = getLocation();
-
-    seller_ctx['deti-key'] = 'Min Delivery time:';
-    seller_ctx['deti-val'] = mapFrequency(ctx.deli-rX(3));
-
-    
-    global_summary_ctx['seller-tech'] = tech
-    global_summary_ctx['seller-yen'] = seller_ctx['yen-val']
-    global_summary_ctx['seller-qty'] = seller_ctx['qty-val']
-
-    /* ************************************************************** */
-
-    update_view(seller_ctx,'seller');
-    //global_seller_timer = setTimeout( ()=>{update_view(zero_ctx,'seller')}, 20*1000);
-  }
-}
-
-function startTimer(duration, display) {
-  clearInterval(global_timer);
-  var start = Date.now(),
-      diff,
-      minutes,
-      seconds;
-  function timer() {
-      // get the number of seconds that have elapsed since 
-      // startTimer() was called
-      diff = duration - (((Date.now() - start) / 1000) | 0);
-
-      // does the same job as parseInt truncates the float
-      minutes = (diff / 60) | 0;
-      seconds = (diff % 60) | 0;
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.textContent = minutes + ":" + seconds; 
-
-      if (diff <= 0) {
-          // add one second so that the count down starts at the full duration
-          // example 05:00 not 04:59
-          start = Date.now() + 1000;
-      }
-  };
-  // we don't want to wait a full second before the timer starts
-  timer();
-  return setInterval(timer, 1000);
-}
-
-function negotiate() {
-    var fiveMinutes = 60 * 5,
-        display = document.querySelector('#time');
-    global_timer = startTimer(fiveMinutes, display);
+/*
+ * Clear the video and audio tracks used by `client` on initiation.
+ */
+var localTracks = {
+  videoTrack: null,
+  audioTrack: null
 };
 
+/*
+ * On initiation no users are connected.
+ */
+var remoteUsers = {};
+
+/*
+ * On initiation. `client` is not attached to any project or channel for any specific user.
+ */
+var options = {
+  appid: null,
+  channel: null,
+  uid: null,
+  token: null
+};
+
+/*
+ * When this page is called with parameters in the URL, this procedure
+ * attempts to join a Video Call channel using those parameters.
+ */
+$(() => {
+  var urlParams = new URL(location.href).searchParams;
+  options.appid = urlParams.get("appid");
+  options.channel = urlParams.get("channel");
+  options.token = urlParams.get("token");
+  options.uid = urlParams.get("uid");
+  if (options.appid && options.channel) {
+    $("#uid").val(options.uid);
+    $("#appid").val(options.appid);
+    $("#token").val(options.token);
+    $("#channel").val(options.channel);
+    $("#join-form").submit();
+  }
+})
+
+/*
+ * When a user clicks Join or Leave in the HTML form, this procedure gathers the information
+ * entered in the form and calls join asynchronously. The UI is updated to match the options entered
+ * by the user.
+ */
+$("#join-form").submit(async function (e) {
+  e.preventDefault();
+  $("#join").attr("disabled", true);
+  try {
+    options.appid = $("#appid").val();
+  //options.appid = '006be84a2b89d4d4344b3a9125bc3275aafIABaA/JQ6QC9nKhV883Hqq0cnJ+y8Hxm8WHPcpnVWFDNw6Eq114AAAAAEAAt9MStH0KWYQEAAQAfQpZh'
+    options.appid = 'be84a2b89d4d4344b3a9125bc3275aaf'
+    
+    options.token = $("#token").val();
+    options.token = '006be84a2b89d4d4344b3a9125bc3275aafIAAsG6nJw/zHyXe80CbRkgAEtlMI8Wgd2A7XXj6p1tRSsY1L2bAAAAAAEAAyrb7j4U+vYQEAAQDiT69h'
+
+    options.channel = $("#channel").val();
+  //options.channel = 'c1'
+    options.channel = 'c3'
+    options.uid = Number($("#uid").val());
+    await join();
+    if(options.token) {
+      $("#success-alert-with-token").css("display", "block");
+    } else {
+      $("#success-alert a").attr("href", `index.html?appid=${options.appid}&channel=${options.channel}&token=${options.token}`);
+      $("#success-alert").css("display", "block");
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    $("#leave").attr("disabled", false);
+  }
+})
+
+/*
+ * Called when a user clicks Leave in order to exit a channel.
+ */
+$("#leave").click(function (e) {
+  leave();
+})
+
+/*
+ * Join a channel, then create local video and audio tracks and publish them to the channel.
+ */
+async function join() {
+
+  // Add an event listener to play remote tracks when remote user publishes.
+  client.on("user-published", handleUserPublished);
+  client.on("user-unpublished", handleUserUnpublished);
+
+  // Join a channel and create local tracks. Best practice is to use Promise.all and run them concurrently.
+
+  [ options.uid, localTracks.audioTrack, localTracks.videoTrack ] = await Promise.all([
+    // Join the channel.
+    //client.join(options.appid, options.channel, options.token || null, options.uid || null),
+    client.join(
+      options.appid,
+      options.channel,
+      options.token || null,
+      options.uid || null),
+    // Create tracks to the local microphone and camera.
+    AgoraRTC.createMicrophoneAudioTrack(),
+    AgoraRTC.createCameraVideoTrack()
+  ]);
+
+  // Play the local video track to the local browser and update the UI with the user ID.
+  localTracks.videoTrack.play("local-player");
+  $("#local-player-name").text(`localVideo(${options.uid})`);
+
+  // Publish the local video and audio tracks to the channel.
+  await client.publish(Object.values(localTracks));
+  console.log("publish success");
+}
+
+/*
+ * Stop all local and remote tracks then leave the channel.
+ */
+async function leave() {
+  for (trackName in localTracks) {
+    var track = localTracks[trackName];
+    if(track) {
+      track.stop();
+      track.close();
+      localTracks[trackName] = undefined;
+    }
+  }
+
+  // Remove remote users and player views.
+  remoteUsers = {};
+  $("#remote-playerlist").html("");
+
+  // leave the channel
+  await client.leave();
+
+  $("#local-player-name").text("");
+  $("#join").attr("disabled", false);
+  $("#leave").attr("disabled", true);
+  console.log("client leaves channel success");
+}
+
+
+/*
+ * Add the local use to a remote channel.
+ *
+ * @param  {IAgoraRTCRemoteUser} user - The {@link  https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/iagorartcremoteuser.html| remote user} to add.
+ * @param {trackMediaType - The {@link https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/itrack.html#trackmediatype | media type} to add.
+ */
+async function subscribe(user, mediaType) {
+  const uid = user.uid;
+  // subscribe to a remote user
+  await client.subscribe(user, mediaType);
+  console.log("subscribe success");
+  if (mediaType === 'video') {
+    const player = $(`
+      <div id="player-wrapper-${uid}">
+        <p class="player-name">remoteUser(${uid})</p>
+        <div id="player-${uid}" class="player"></div>
+      </div>
+    `);
+    $("#remote-playerlist").append(player);
+    user.videoTrack.play(`player-${uid}`);
+  }
+  if (mediaType === 'audio') {
+    user.audioTrack.play();
+  }
+}
+
+/*
+ * Add a user who has subscribed to the live channel to the local interface.
+ *
+ * @param  {IAgoraRTCRemoteUser} user - The {@link  https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/iagorartcremoteuser.html| remote user} to add.
+ * @param {trackMediaType - The {@link https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/itrack.html#trackmediatype | media type} to add.
+ */
+function handleUserPublished(user, mediaType) {
+  const id = user.uid;
+  remoteUsers[id] = user;
+  subscribe(user, mediaType);
+}
+
+/*
+ * Remove the user specified from the channel in the local interface.
+ *
+ * @param  {string} user - The {@link  https://docs.agora.io/en/Voice/API%20Reference/web_ng/interfaces/iagorartcremoteuser.html| remote user} to remove.
+ */
+function handleUserUnpublished(user, mediaType) {
+  if (mediaType === 'video') {
+    const id = user.uid;
+    delete remoteUsers[id];
+    $(`#player-wrapper-${id}`).remove();
+
+  }
+}
 </script>
-  </body>
+</body>
 </html>
-
-<!--
-Pathos - in favor
-+ please god face
-Ethos
-Logos - oposed
-+ Facts
-+ Statistics
-+ Examples
-+ testimonials
--> reasoning to connect logos to argument
-
-+ Chronological
-+ Spatial
-- cause effect
-- problem solution
-+ Topical
-+ Pro/con
-- compared advantages
-- need-plan organization structure
-+ Mnemonic
-+ topical organization
-
-0monroe's motivated sequence (Attention Goals -> Need -> Solution and objections Satisfaction -> Visualization of gain and lost -> Action appeal)
--->
